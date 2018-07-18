@@ -8,8 +8,8 @@ RUN lighttpd-enable-mod fastcgi-php
 RUN rm /var/www/html/index.lighttpd.html
 
 # Install LWT
-#COPY lwt_v_1_6_1.zip /tmp/lwt.zip
-ADD http://downloads.sourceforge.net/project/lwt/lwt_v_1_6_1.zip /tmp/lwt.zip
+#COPY lwt_v_1_6_2.zip /tmp/lwt.zip
+ADD http://downloads.sourceforge.net/project/lwt/lwt_v_1_6_2.zip /tmp/lwt.zip
 RUN cd /var/www/html && unzip /tmp/lwt.zip && rm /tmp/lwt.zip
 RUN mv /var/www/html/connect_xampp.inc.php /var/www/html/connect.inc.php
 RUN chmod -R 755 /var/www/html
@@ -18,5 +18,5 @@ EXPOSE 80
 
 CMD /etc/init.d/mysql start && /etc/init.d/lighttpd start && sleep infinity
 
-# docker built -t lwt .
+# docker build -t lwt .
 # docker run -it -p 8010:80 lwt
